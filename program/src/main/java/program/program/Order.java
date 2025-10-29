@@ -18,6 +18,11 @@ public class Order implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Instant moment;
+    public Order(Long id, Instant moment, User user) {
+        this.id = id;
+        this.moment = moment;
+        this.user = user;
+    }
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User user;

@@ -31,8 +31,6 @@ public class User implements Serializable{
         return "User [id=" + id + ", nome=" + nome + ", email=" + email + ", password=" + password + ", phone=" + phone
                 + "]";
     }
-
- 
     public User(Long id, String nome, String email, String password, String phone) {
         this.id = id;
         this.nome = nome;
