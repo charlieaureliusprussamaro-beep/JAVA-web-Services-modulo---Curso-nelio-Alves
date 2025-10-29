@@ -1,8 +1,6 @@
 package program.program;
-
 import java.time.Instant;
 import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +15,8 @@ public class TestConfig implements CommandLineRunner{
     private OrderRepository orderRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProdutoRepository produtoRepository;
     @Override
     public void run(String... args) throws Exception {
     User u1 = new User(null, "Maria Brown", "maria@gmail.com", "988888888", "123456"); 
@@ -30,5 +30,16 @@ public class TestConfig implements CommandLineRunner{
     Category cat2 = new Category(null, "Books"); 
     Category cat3 = new Category(null, "Computers"); 
     categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
-    }
+    Produto p1 = new Produto(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, ""); 
+    Produto p2 = new Produto(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, ""); 
+    Produto p3 = new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, ""); 
+    Produto p4 = new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, ""); 
+    Produto p5 = new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
+    p1.getCategories().add(cat2);
+    p2.getCategories().add(cat1);
+    p3.getCategories().add(cat3);
+    p4.getCategories().add(cat3);
+    p5.getCategories().add(cat2);
+    produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+}
 }

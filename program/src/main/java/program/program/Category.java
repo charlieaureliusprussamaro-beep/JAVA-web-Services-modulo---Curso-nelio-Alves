@@ -1,11 +1,14 @@
 package program.program;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_Category")
@@ -15,6 +18,8 @@ public class Category implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @ManyToMany(mappedBy = "categories")
+    public Set<Produto> produtos = new HashSet<>();
     @Override
     public int hashCode() {
         final int prime = 31;
